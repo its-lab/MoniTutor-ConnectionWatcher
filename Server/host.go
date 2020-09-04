@@ -1,9 +1,9 @@
 package main
 
 import (
-	"MoniWatchDog/MoniTutorWatchDog/Server/business"
-	"MoniWatchDog/MoniTutorWatchDog/Server/external"
-	"MoniWatchDog/MoniTutorWatchDog/Server/remote"
+	"MoniTutorConnectionWatcher/Server/business"
+	"MoniTutorConnectionWatcher/Server/external"
+	"MoniTutorConnectionWatcher/Server/remote"
 	"net/http"
 )
 

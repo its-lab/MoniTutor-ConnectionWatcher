@@ -1,7 +1,7 @@
 package external
 
 import (
-	"MoniWatchDog/MoniTutorWatchDog/Server/business"
+	"MoniTutorConnectionWatcher/Server/business"
 	"bytes"
 	"encoding/json"
 	"fmt"
@@ -15,8 +15,6 @@ type Updater struct {
 	UrlPost string
 	UrlBase string
 }
-
-
 
 func (m *Updater) GetRev(body io.Reader) (*business.Result, error) {
 	result := &business.Result{}
@@ -103,12 +101,6 @@ func (m *Updater) UpdateDocument(docs *business.Result, id string, output string
 	}
 
 	fmt.Println(resp)
-
-	return nil
-}
-
-func (m *Updater) ReloadMoniTutor(username string, scenarioNum string) error {
-	//request, err := http.NewRequest("GET", "https://10.0.0.10/MoniTutor/scenarios/progress.html/" + scenarioNum + "/" + username, nil)
 
 	return nil
 }

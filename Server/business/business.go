@@ -59,7 +59,6 @@ type Session struct {
 type CouchConnector interface {
 	GetRev(body io.Reader) (*Result, error)
 	UpdateDocument(docs *Result, id string, output string, severityCode int) error
-	ReloadMoniTutor(username string, scenarioNum string) error
 }
 
 func buildBody(params *Params) (io.Reader, error) {

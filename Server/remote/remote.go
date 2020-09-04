@@ -1,7 +1,7 @@
 package remote
 
 import (
-	"MoniWatchDog/MoniTutorWatchDog/Server/business"
+	"MoniTutorConnectionWatcher/Server/business"
 	"net/http"
 )
 
