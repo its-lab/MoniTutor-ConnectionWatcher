@@ -22,7 +22,7 @@ type Id struct {
 func main() {
 	user := flag.String("u", "", "MoniTutor username")
 	host := flag.String("h", "", "Hostname of the system (itsclient/itsserver/itsjumphost)")
-	ip := flag.String("a", "10.0.0.10", "IP address of the MoniTutor System. Default: 10.0.0.10")
+	ip := flag.String("a", "", "IP address of the MoniTutor System")
 
 	flag.Parse()
 
