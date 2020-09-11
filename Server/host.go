@@ -4,16 +4,25 @@ import (
 	"MoniTutorConnectionWatcher/Server/business"
 	"MoniTutorConnectionWatcher/Server/external"
 	"MoniTutorConnectionWatcher/Server/remote"
+	"flag"
+	"log"
 	"net/http"
 )
 
 func main() {
 	prefix := "/moniWatcher"
 
+	filepath := flag.String("f", "Server/config.json", "path to config.json ")
+	flag.Parse()
+
 	user := &business.UserCred{}
-	updater := &external.Updater{
-		UrlPost: "http://10.0.0.10:5984/monitutor-results/_find?filter=_view&view=host_status",
-		UrlBase: "http://10.0.0.10:5984/monitutor-results/",
+	updater := &external.Updater{}
+
+	updater, err := external.ReadConfig(updater, *filepath)
+
+	if err != nil {
+		log.Println("failed to read config File:", err.Error())
+		return
 	}
 
 	sessions := make(chan business.Session, 200)

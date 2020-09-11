@@ -6,14 +6,35 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"time"
 )
 
 type Updater struct {
-	UrlPost string
-	UrlBase string
+	UrlPost string `json:"post_url"`
+	UrlBase string `json:"base_url"`
+}
+
+func ReadConfig(updater *Updater, filepath string) (*Updater, error) {
+	content, err := ioutil.ReadFile(filepath)
+
+	if err != nil {
+		log.Println("failed to read config file")
+		return updater, err
+	}
+
+	body := bytes.NewReader(content)
+
+	err = json.NewDecoder(body).Decode(updater)
+
+	if err != nil {
+		log.Println("failed to unmarshal config file content")
+		return updater, err
+	}
+
+	return updater, nil
 }
 
 func (m *Updater) GetRev(body io.Reader) (*business.Result, error) {
